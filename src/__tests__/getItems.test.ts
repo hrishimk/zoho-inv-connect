@@ -53,7 +53,8 @@ describe('Adjustment', () => {
         const data = await inventory.adjust({
             date: curDate, adjustment_type: 'quantity', reason: 'Store credit', line_items: [
                 {
-                    item_id: '445212000000011058',
+                    // @ts-ignore
+                    item_id: process.env.PRODUCT_ID,
                     quantity_adjusted: 100
                 }
             ]
