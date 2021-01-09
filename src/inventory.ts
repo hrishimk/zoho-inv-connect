@@ -12,7 +12,7 @@ interface AdjustmentInfo {
 
 export class ZohoInventory {
 
-    accessToken: string
+    accessToken: string = ''
     refreshToken: string
     clientId: string
     clientSecret: string
@@ -20,8 +20,7 @@ export class ZohoInventory {
 
     axios: AxiosInstance
 
-    constructor({ accessToken, refreshToken, clientId, clientSecret }: { accessToken: string, refreshToken: string, clientId: string, clientSecret: string }) {
-        this.accessToken = accessToken
+    constructor({ refreshToken, clientId, clientSecret }: { refreshToken: string, clientId: string, clientSecret: string }) {
         this.refreshToken = refreshToken
         this.clientId = clientId
         this.clientSecret = clientSecret
@@ -65,9 +64,10 @@ export class ZohoInventory {
         }
     }
 
-    getItems() {
+    async getItems() {
         this.initCheck()
-        return this.axios.get('/items').then(r => r.data)
+        const r = await this.axios.get('/items')
+        return r.data
     }
 
     async adjust({ date, reason, adjustment_type, line_items }
