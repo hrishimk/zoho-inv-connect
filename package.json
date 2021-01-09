@@ -1,6 +1,6 @@
 {
   "name": "zoho-inv-connect",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Connect to zoho inv",
   "main": "dist/inventory.js",
   "scripts": {
