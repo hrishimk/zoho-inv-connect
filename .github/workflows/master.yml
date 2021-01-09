@@ -11,6 +11,12 @@ jobs:
         with:
           node-version: 14
       - run: npm install
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          PRODUCT_ID: ${{ secrets.PRODUCT_ID }}
       - run: npm test
       - run: npm run build
       - uses: JS-DevTools/npm-publish@v1
